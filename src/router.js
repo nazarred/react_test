@@ -15,7 +15,7 @@ export default (
       <div>
           <Route exact path="/" component={Home} />
           <Route path="/add" component={AddForm} />
-          <Route path="/post/:number" component={Detail} />
+          <Route path="/post/:slug" component={Detail} />
       </div>
   </BrowserRouter>
 );

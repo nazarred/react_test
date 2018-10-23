@@ -1,4 +1,6 @@
 import React, {PureComponent} from 'react'
+import { connect } from 'react-redux';
+import { addPost } from '../actions'
 
 class AddForm extends PureComponent {
     state = {
@@ -9,14 +11,20 @@ class AddForm extends PureComponent {
       this.setState({imgUrl: event.target.value})
     }
 
+    handleAddImage = (event) => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      this.props.onAddPost(data);
+      this.props.history.push('/')
+    };
+
     render() {
-        const handleAddImage = this.props.handleAddImage;
         const image = this.state.imgUrl && <img className="card-img-top" src={this.state.imgUrl} alt="Card cap"/>;
         return (
             <div className="card" style={{width: '50%'}}>
                 {image}
                 <div className="card-body">
-                    <form onSubmit={handleAddImage}>
+                    <form onSubmit={this.handleAddImage}>
                         <div className="form-group">
                             <input className="form-control" name='url' onChange={this.handleChange.bind(this)}/>
                         </div>
@@ -31,4 +39,12 @@ class AddForm extends PureComponent {
     }
 }
 
-export default  AddForm
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddPost: data => {
+      dispatch(addPost(data));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AddForm)

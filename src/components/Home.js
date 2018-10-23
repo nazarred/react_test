@@ -9,10 +9,9 @@ import Post from './Post'
 class Home extends Component {
 
   render() {
-    console.log(this.props);
     const posts = this.props.posts.map((post, index) =>
             <div key = {index} >
-                <Post index={index} imageUrl={post.url} title={post.title}/>
+                <Post index={index} imageUrl={post.url} title={post.title} slug={post.slug}/>
             </div>
         );
 
@@ -29,8 +28,8 @@ class Home extends Component {
 
 const mapStateToProps = function(store) {
   return {
-    posts: store.postState.posts
+    posts: store.postState
   };
-}
+};
 
 export default connect(mapStateToProps)(Home);

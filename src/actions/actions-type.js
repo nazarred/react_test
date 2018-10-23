@@ -1,3 +1,2 @@
-export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
-export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
-export const USER_ADD_SUCCESS = 'USER_ADD_SUCCESS';
+export const DELETE_POST = 'DELETE_POST';
+export const ADD_POST = 'ADD_POST';

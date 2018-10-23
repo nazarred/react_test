@@ -1,16 +1,27 @@
 import React, {PureComponent} from 'react'
+import { connect } from 'react-redux';
+import {addPost} from "../actions";
+import { deletePost } from '../actions';
+
+
 
 class Detail extends PureComponent {
 
+    handleDeleteImage(slug) {
+      this.props.onDeletePost(slug);
+      this.props.history.push('/')
+    }
+
     render() {
-        const {posts, handleDeleteImage} = this.props;
-        const index = this.props.match.params.number;
-        const post = posts[index];
+        const { posts } = this.props;
+        const slug = this.props.match.params.slug;
+        const post = posts.filter(post => post.slug === slug)[0];
+        //TODO: return 404 if post=undefined
         return (
             <div className="card" style={{width: '50%'}}>
                 <button
                     className='btn btn-danger'
-                    onClick={() => handleDeleteImage(index)}
+                    onClick={() => this.handleDeleteImage(slug)}
                     style={{position: 'absolute'}}>
                     Delete
                 </button>
@@ -23,4 +34,19 @@ class Detail extends PureComponent {
     }
 }
 
-export default  Detail
+const mapStateToProps = function(store) {
+  return {
+    posts: store.postState
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeletePost: slug => {
+      dispatch(deletePost(slug));
+    }
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)

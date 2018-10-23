@@ -1,13 +1,13 @@
-import React, {PureComponent} from 'react'
+import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
-class Post extends PureComponent {
+class Post extends Component {
 
     render() {
-        const {imageUrl, title, index} = this.props;
+        const {imageUrl, title, slug } = this.props;
         return (
             <div className="card" style={{width: '18rem'}}>
-                <Link to={`/post/${index}`}>
+                <Link to={`/post/${slug}`}>
                     <img className="card-img-top" src={imageUrl} alt="Card cap"/>
                 </Link>
                     <div className="card-body">
@@ -17,5 +17,7 @@ class Post extends PureComponent {
         )
     }
 }
+
+
 
 export default Post
