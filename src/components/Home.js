@@ -18,7 +18,9 @@ class Home extends Component {
     return (
       <div className="container">
           <div className='d-flex flex-wrap' style={{height: '220px'}}>
-            <Link to='/add' className='btn card' style={{width: '18rem'}}>New Post</Link>
+            <Link to='/add' className='btn card align-text-bottom' style={{width: '18rem'}}>
+                <span style={{marginTop: '85px'}}>New Post</span>
+            </Link>
             {posts}
           </div>
       </div>

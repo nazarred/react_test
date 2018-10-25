@@ -17,16 +17,20 @@ class Detail extends PureComponent {
         const post = posts.filter(post => post.slug === slug)[0];
         //TODO: return 404 if post=undefined
         return (
-            <div className="card" style={{width: '50%'}}>
-                <button
-                    className='btn btn-danger'
-                    onClick={() => this.handleDeleteImage(slug)}
-                    style={{position: 'absolute'}}>
-                    Delete
-                </button>
-                <img className="card-img-top" src={post.url} alt=''/>
-                <div className="card-body">
-                    {post.title}
+            <div className={'row'}>
+                <div className={'col-md-6 offset-md-3'}>
+                    <div className="card p-3">
+                        <button
+                            className='btn btn-danger'
+                            onClick={() => this.handleDeleteImage(slug)}
+                            style={{position: 'absolute'}}>
+                            Delete
+                        </button>
+                        <img className="card-img-top" src={post.url} alt=''/>
+                        <div className="card-body">
+                            {post.title}
+                        </div>
+                    </div>
                 </div>
             </div>
         )

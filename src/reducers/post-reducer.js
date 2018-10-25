@@ -1,5 +1,4 @@
 import { ADD_POST, DELETE_POST } from '../actions/actions-type';
-// import _ from 'lodash';
 
 const initialState = [
       {

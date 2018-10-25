@@ -8,7 +8,7 @@ import AddForm from './components/AddForm';
 
 export default (
   <BrowserRouter>
-      <div>
+      <div className='p-5'>
           <Route exact path="/" component={Home} />
           <Route path="/add" component={AddForm} />
           <Route path="/post/:slug" component={Detail} />
