@@ -28,7 +28,7 @@ class AddForm extends PureComponent {
                         <div className="card-body">
                             <form onSubmit={this.handleAddImage}>
                                 <div className="form-group">
-                                    <input className="form-control" name='url' onChange={this.handleChange.bind(this)}/>
+                                    <input className="form-control" name='url' onBlur={this.handleChange.bind(this)}/>
                                 </div>
                                 <div className="form-group">
                                     <input className="form-control" name='title'/>
