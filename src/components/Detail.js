@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react'
 import { connect } from 'react-redux';
 import { deletePost } from '../actions';
+import { Col, Row, Card, CardImg, Button } from 'react-bootstrap'
+
 
 
 const buttonStyle = {
@@ -23,22 +25,22 @@ class Detail extends PureComponent {
         const post = posts.filter(post => post.slug === slug)[0];
         //TODO: return 404 if post=undefined
         return (
-            <div className={'row'}>
-                <div className={'col-md-6 offset-md-3'}>
-                    <div className="card p-3">
-                        <button
-                            className='btn btn-danger'
+            <Row>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <Card>
+                        <Button
+                            bsPrefix="btn-danger"
                             onClick={() => this.handleDeleteImage(slug)}
                             style={buttonStyle}>
                             Delete
-                        </button>
-                        <img className="card-img-top" src={post.url} alt=''/>
-                        <div className="card-body">
+                        </Button>
+                        <CardImg src={post.url} alt=''/>
+                        <Card variant="body">
                             {post.title}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </Card>
+                    </Card>
+                </Col>
+            </Row>
         )
     }
 }

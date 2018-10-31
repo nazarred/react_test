@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import { Container } from 'react-bootstrap'
+import { Container, Row, Button } from 'react-bootstrap'
 
-import 'bootstrap/dist/css/bootstrap.css'
 
 import Post from './Post'
 
@@ -14,6 +13,10 @@ const mainRowStyle = {
 
 const linkStyle = {
     width: '18rem'
+};
+
+const buttonStyle ={
+    marginTop: '85px'
 };
 
 
@@ -28,12 +31,12 @@ class Home extends Component {
 
     return (
       <Container>
-          <div className='d-flex flex-wrap' style={mainRowStyle}>
-            <Link to='/add' className='btn card align-text-bottom' style={{width: '18rem'}}>
-                <span style={{marginTop: '85px'}}>New Post</span>
+          <Row style={mainRowStyle}>
+            <Link to='/add' className='btn card' style={linkStyle}>
+                <Button style={buttonStyle}>New Post</Button>
             </Link>
             {posts}
-          </div>
+          </Row>
       </Container>
     );
   }

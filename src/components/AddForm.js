@@ -1,4 +1,6 @@
 import React, {PureComponent} from 'react'
+import { Col, Row, Card, FormGroup, FormControl, Button } from 'react-bootstrap'
+
 import { connect } from 'react-redux';
 import { addPost } from '../actions'
 
@@ -7,9 +9,9 @@ class AddForm extends PureComponent {
             imgUrl: null
         };
 
-    handleChange(event) {
+    handleImgChange = (event) => {
       this.setState({imgUrl: event.target.value})
-    }
+    };
 
     handleAddImage = (event) => {
       event.preventDefault();
@@ -21,24 +23,24 @@ class AddForm extends PureComponent {
     render() {
         const image = this.state.imgUrl && <img className="card-img-top" src={this.state.imgUrl} alt="Card cap"/>;
         return (
-            <div className={'row'}>
-                <div className={'col-md-6 offset-md-3'}>
-                    <div className="card">
+            <Row>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <Card>
                         {image}
                         <div className="card-body">
                             <form onSubmit={this.handleAddImage}>
-                                <div className="form-group">
-                                    <input className="form-control" name='url' onBlur={this.handleChange.bind(this)}/>
-                                </div>
-                                <div className="form-group">
-                                    <input className="form-control" name='title'/>
-                                </div>
-                                <button type="submit" className="btn btn-primary">POST</button>
+                                <FormGroup >
+                                    <FormControl name='url' onBlur={this.handleImgChange}/>
+                                </FormGroup>
+                                <FormGroup >
+                                    <FormControl name='title'/>
+                                </FormGroup>
+                                <Button type="submit" bsPrefix="btn-danger">POST</Button>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </Card>
+                </Col>
+            </Row>
         )
     }
 }
