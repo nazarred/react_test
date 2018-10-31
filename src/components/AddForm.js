@@ -4,8 +4,8 @@ import { addPost } from '../actions'
 
 class AddForm extends PureComponent {
     state = {
-        imgUrl: null
-    };
+            imgUrl: null
+        };
 
     handleChange(event) {
       this.setState({imgUrl: event.target.value})

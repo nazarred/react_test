@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { deletePost } from '../actions';
 
 
+const buttonStyle = {
+    position: 'absolute',
+    margin: '5px'
+};
+
+
 
 class Detail extends PureComponent {
 
@@ -23,7 +29,7 @@ class Detail extends PureComponent {
                         <button
                             className='btn btn-danger'
                             onClick={() => this.handleDeleteImage(slug)}
-                            style={{position: 'absolute'}}>
+                            style={buttonStyle}>
                             Delete
                         </button>
                         <img className="card-img-top" src={post.url} alt=''/>
